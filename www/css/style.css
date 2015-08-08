@@ -1,0 +1,67 @@
+/* Empty. Add your own CSS if you like */
+.bar-dark {
+	height: 56px;
+}
+
+.tabs-striped.tabs-top.tabs-background-dark.tabs-color-light {
+	margin-top: 12px;
+}
+.view-title {
+	font-size: 40px;
+}
+
+/* Task css */
+.taskname {
+	font-size: 15px;
+	line-height: 1px;
+}
+.taskduedate {
+	font-size: 12px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
+	line-height:1px;
+}
+.item-remove-animate{
+	height:70px;
+	padding-top: 0px;
+	margin-top:0px;
+}
+
+.list.card {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+.button.button-icon.icon.ion-edit:before {
+	font-size: 18px;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+.button.button-icon.icon.ion-android-add:before {
+	font-size: 25px;
+	padding-right: 9px;
+	padding-top: 3px;
+}
+.title.title-center.header-item {
+	font-size: 20px;
+	padding-top: 6px;
+}
+
+/* Modal css */
+.bar-dark {
+	height: 56px;
+	font-size: 20px;
+}
+.title {
+	padding-top: 7px;
+	font-size: 50px;
+	height: 50px;
+}
+.button.button-icon.icon.ion-android-close:before	 {
+	font-size:25px;
+	padding-top: 3px;
+	padding-right: 10px;
+}
+.list {
+	padding-top: 12px;
+}

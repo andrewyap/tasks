@@ -1,0 +1,38 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <ion-list>
+    <ion-toggle  ng-model="settings.enableNotifications">
+        Notifications
+    </ion-toggle>
+    <ion-toggle ng-model="settings.Vibration">
+    	Notification Vibration
+    </ion-toggle>
+    <div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Notify me
+    </div>
+    <select>
+      <option>15 minutes before an event</option>
+      <option selected>30 minutes before an event</option>
+      <option>1 hour before an event</option>
+    </select>
+  </label>
+  <label class="item item-input item-icon-right">
+              <span class="input-label">Username</span>
+              <input type="text" id="username" placeholder="Username" ng-model="username" ng-hide="showUassword">
+            <input type="text" id="passwordRaw" placeholder="Username" ng-model="username" ng-show="showUassword">
+         </label>
+  <label class="item item-input item-icon-right">
+              <span class="input-label">Password</span><i class="icon ion-eye" on-touch="showPassword = !showPassword"></i>
+              <input type="password" id="password" placeholder="Password" ng-model="password" ng-hide="showPassword">
+            <input type="text" id="passwordRaw" placeholder="Password" ng-model="password" ng-show="showPassword">
+         </label>
+     <button class="button button-block button-dark" side="right">
+     	Login
+     </button>
+</div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,64 @@
+<ion-view view-title="Tasks">
+<div class="bar bar-header">
+</div>
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">Overdue</div>
+      <div class="item item-body">
+        <div ng-controller="TaskCtrl">
+          <ion-list show-delete = "data.showDelete" show-reorder = "data.showReorder" can-swipe="true" type = "card">
+            <ion-item ng-repeat="task in tasks" task="task" href="#/tab/dash/{{task.id}}" class="item-remove-animate">
+              <h1 class="taskname">{{task.name}}</h1>
+              <h1 class="taskduedate">Due on the {{task.duedate}}</h1>
+              <ion-delete-button class="ion-android-delete" ng-click="onTaskDelete(task)">
+              </ion-delete-button>
+              <ion-reorder-button class="ion-navicon" on-reorder="moveTask(task,  $fromIndex, $toIndex)">
+              </ion-reorder-button>
+              <ion-option-button class="button-assertive" ng-click="onTaskDelete(task)">Delete</ion-option-button>
+  </ion-item>
+</ion-list>
+          
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Today</div>
+      <div class="item item-body">
+        <div>
+          <ul class="list">
+            <div class="item item-button-left">
+            Call George
+            <button class="button button-clear">
+              <i class="icon ion-android-checkbox-blank"></i>
+            </button>
+            </div>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-checkbox"></i>
+                Check mail
+            </a>
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox">
+              </label>
+            <a href="http://google.com">
+            Item 3
+            </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+                    <a class="button button-icon icon-small ion-chevron-right"> </a>
+      </div>
+    </div>
+    <button class="button button-full button-positive">
+    New Task
+    </button>
+  </ion-content>
+</ion-view>
