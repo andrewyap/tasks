@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ionic'])
+angular.module('starter.controllers', ['ionic', 'ionic-datepicker'])
 
 .controller('TaskCtrl', function($scope, $ionicModal) {
 
@@ -77,6 +77,17 @@ angular.module('starter.controllers', ['ionic'])
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
   };
+
+  $scope.currentDate = new Date();
+  $scope.title = "Custom Title";
+
+$scope.datePickerCallback = function (val) {
+    if(typeof(val)==='undefined'){      
+        console.log('Date not selected');
+    }else{
+        console.log('Selected date is : ', val);
+    }
+};
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
