@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ionic', 'ionic-datepicker'])
 
-.controller('TaskCtrl', function($scope, $ionicModal) {
+.controller('TaskCtrl', function($scope, $state, $ionicModal, TaskService) {
 
   $scope.data = [{
     showDelete: true
@@ -8,41 +8,52 @@ angular.module('starter.controllers', ['ionic', 'ionic-datepicker'])
     showReorder: true
   }];
 
+  $scope.tasks = TaskService.tasks;
 
-  $scope.tasks = [{
-    id: 0,
-    name: 'Wash the dishes',
-    duedate: '15th August 2015',
-  }, {
-    id: 1,
-    name: 'Do Geography Assignment',
-    duedate: '12th August 2015',
-  }, {
-    id: 2,
-    name: 'Do English Oral',
-    duedate: '10th August 2015',
-  }, {
-    id: 3,
-    name: 'Finish Maths homework',
-    duedate: '8th August 2015',
-  }, {
-    id: 4,
-    name: 'Research on Nelson Mandela',
-    duedate: '6th August 2015',
-  }, {
-    id: 5,
-    name: 'Eat a pie',
-    duedate: '19th February 2016',
-  }, {
-    id: 6,
-    name: 'Get a PhD',
-    duedate: '1st December 3050',
-  }];
+  // $scope.tasks = [{
+  //   id: 0,
+  //   name: 'Wash the dishes',
+  //   duedate: '15th August 2015',
+  // }, {
+  //   id: 1,
+  //   name: 'Do Geography Assignment',
+  //   duedate: '12th August 2015',
+  // }, {
+  //   id: 2,
+  //   name: 'Do English Oral',
+  //   duedate: '10th August 2015',
+  // }, {
+  //   id: 3,
+  //   name: 'Finish Maths homework',
+  //   duedate: '8th August 2015',
+  // }, {
+  //   id: 4,
+  //   name: 'Research on Nelson Mandela',
+  //   duedate: '6th August 2015',
+  // }, {
+  //   id: 5,
+  //   name: 'Eat a pie',
+  //   duedate: '19th February 2016',
+  // }, {
+  //   id: 6,
+  //   name: 'Get a PhD',
+  //   duedate: '1st December 3050',
+  // }];
 
   $scope.task = {
+    id: 0,                // Andrew added this
     name: '',
     duedate: ''
   };
+
+  $scope.resetTask = function() {
+    $scope.task = {
+      id: 0,
+      name: '',
+      duedate: ''
+    }
+  };
+
   //delete/move code
   $scope.onTaskDelete = function(task) {
     $scope.tasks.splice($scope.tasks.indexOf(task),1);
@@ -62,10 +73,19 @@ angular.module('starter.controllers', ['ionic', 'ionic-datepicker'])
 
   // Called when the form is submitted
   $scope.createTask = function() {
-    $scope.tasks.push($scope.task);
+    $scope.task.id = $scope.tasks.length;     // Andrew added this
+    console.log(JSON.stringify($scope.task));
+    TaskService.add($scope.task);
+    console.log();
+    console.log(JSON.stringify(TaskService.tasks));
     $scope.taskModal.hide();
-    $scope.task.name = "";
-    $scope.task.duedate = "";
+    $scope.resetTask();
+    $scope.tasks = TaskService.tasks;
+  };
+
+  $scope.openSelectedTask = function(taskId) {
+    TaskService.selectedTaskId = taskId;
+    $state.go('tab.task-detail');
   };
 
   // Open our new task modal
@@ -108,8 +128,8 @@ $scope.datePickerCallback = function (val) {
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
-.controller('TaskDetailCtrl', function($scope, $stateParams, Tasks) {
-  $scope.task = Tasks.get($stateParams.taskId);
+.controller('TaskDetailCtrl', function($scope, $stateParams, TaskService) {
+  $scope.task = TaskService.get(TaskService.selectedTaskId);
 })
 
 .controller('AccountCtrl', function($scope) {

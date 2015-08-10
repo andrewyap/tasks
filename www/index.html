@@ -6,7 +6,7 @@
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="lib/ionic-material/ionic.material.min.css" rel="stylesheet">
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href="lib/ionic-datepicker/dist/style.css" rel="stylesheet"> 
@@ -17,7 +17,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ionic-material/ionic.material.min.js"></script>
+    <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -70,9 +70,9 @@
           <label class="item item-input">
             <input type="text" placeholder="What task do you have to do?" ng-model="task.name">
           </label>
-            <ionic-datepicker idate="currentDate" disablepreviousdates="false"  disablefuturedates="false" callback="datePickerCallback" disableddates="disabledDates" title="title" mondayfirst="true">
+            <!-- <ionic-datepicker idate="currentDate" disablepreviousdates="false"  disablefuturedates="false" callback="datePickerCallback" disableddates="disabledDates" title="title" mondayfirst="true">
                 <button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
-            </ionic-datepicker>
+            </ionic-datepicker> -->
         </div>
         <div class="padding">
           <button type="submit" class="button button-block button-positive">Create Task</button>

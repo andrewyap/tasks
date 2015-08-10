@@ -50,3 +50,65 @@ angular.module('starter.services', ['ionic-datepicker'])
   };
 });
 
+angular.module('starter.services', ['ionic-datepicker'])
+
+
+.factory('TaskService', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var tasks = [{
+    id: 0,
+    name: 'Wash the dishes',
+    duedate: '15th August 2015',
+  }, {
+    id: 1,
+    name: 'Do Geography Assignment',
+    duedate: '12th August 2015',
+  }, {
+    id: 2,
+    name: 'Do English Oral',
+    duedate: '10th August 2015',
+  }, {
+    id: 3,
+    name: 'Finish Maths homework',
+    duedate: '8th August 2015',
+  }, {
+    id: 4,
+    name: 'Research on Nelson Mandela',
+    duedate: '6th August 2015',
+  }, {
+    id: 5,
+    name: 'Eat a pie',
+    duedate: '19th February 2016',
+  }, {
+    id: 6,
+    name: 'Get a PhD',
+    duedate: '1st December 3050',
+  }];
+
+  var selectedTaskId = undefined;
+
+  return {
+    tasks: tasks,
+
+    selectedTaskId: selectedTaskId,
+
+    add: function(task) {
+      console.log("received task: " + JSON.stringify(task));
+      tasks.push(task);
+    },
+
+    remove: function(task) {
+      tasks.splice(tasks.indexOf(task), 1);
+    },
+    get: function(taskId) {
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === parseInt(taskId)) {
+          return tasks[i];
+        }
+      }
+      return null;
+    }
+  };
+});

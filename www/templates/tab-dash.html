@@ -7,7 +7,7 @@
       <div class="item item-body">
         <div ng-controller="TaskCtrl">
           <ion-list show-delete = "data.showDelete" show-reorder = "data.showReorder" can-swipe="true" type = "card">
-            <ion-item ng-repeat="task in tasks" task="task" href="#/tab/dash/{{task.id}}" class="item-remove-animate">
+            <ion-item ng-repeat="task in tasks" ng-click="openSelectedTask(task.id)" class="item-remove-animate">
               <h1 class="taskname">{{task.name}}</h1>
               <h1 class="taskduedate">Due on the {{task.duedate}}</h1>
               <ion-delete-button class="ion-android-delete" ng-click="onTaskDelete(task)">
@@ -17,6 +17,7 @@
               <ion-option-button class="button-assertive" ng-click="onTaskDelete(task)">Delete</ion-option-button>
   </ion-item>
 </ion-list>
+{{tasks | json}}
           
         </div>
       </div>
